@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T1les</title>
     <link rel="stylesheet" href="css/main.css">
-
     <header>
         <nav>
             <ul>
@@ -21,6 +20,12 @@
     <div class="title">T1les</div>
 
     <div class="container">
+        <form method="post" action="/">
+        <input class="form-control" name="nameid">
+        <input id="scores" type="hidden" name="scores" value=""/>
+        <button>Add</button>
+        </form>
+
         <div class="counter"><span id ="scoreSpan"></span></div>
         <div class="highscore"><span id ="highscore">0</span></div>
         <div id="game">
