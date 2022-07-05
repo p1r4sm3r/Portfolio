@@ -1,21 +1,25 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({extended:true}))
-mongoose.connect('mongodb+srv://t1les:t1les12345@cluster0.zb7tc7u.mongodb.net/Game_Data', {useNewUrlParser: true}, {useUnifiedTopology: true});
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.use(express.static(__dirname + '/runsite')); // folder with html css etc.
+
+mongoose.connect('your mongodb', {useNewUrlParser: true}, {useUnifiedTopology: true});
 
 const gameDataSchema = {
+    nameid: String,
     score: String,
 }
 
-const gameData = mongoose.model("Game_Data", gameDataSchema)
-app.use(express.static("runsite"));
+const gameData = mongoose.model("Game_Data", gameDataSchema);
 
 app.post("/", function(req, res) {
     let newGameData = new gameData ({
-        score: req.body.highscore,
+        nameid: req.body.nameid,
+        score: req.body.scores,
     });
     newGameData.save();
     res.redirect('/')
