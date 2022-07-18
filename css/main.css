@@ -153,8 +153,8 @@ img {
     position:absolute!important;
     top:0;
     left:0;
-    height:auto;
-    width:auto;
+    max-width:415px;
+    height:450px;
 }
 .button_links {
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
