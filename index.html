@@ -21,9 +21,13 @@
 
     <div class="container">
         <form method="post" action="/">
-        <input class="form-control" name="nameid">
+        <select name="nameid">
+            <option value="Pirasmer">Pirasmer</option>
+            <option value="Guest">Guest</option>
+            <option value="Anon">Anon</option>
+        </select>
         <input id="scores" type="hidden" name="scores" value=""/>
-        <button>Add</button>
+        <button class = 'button button1' style = "position:relative; left:10px;">Add</button>
         </form>
 
         <div class="counter"><span id ="scoreSpan"></span></div>
