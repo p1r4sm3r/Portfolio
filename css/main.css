@@ -21,6 +21,13 @@
     left:960px;
     animation: block 1s infinite linear;
 }
+#pause {
+    width: 4px;
+    height: 16px;
+    border-right: 4px solid #6F58C9;
+    border-left: 4px solid #6F58C9;
+    margin-left:29.4em;
+}
 @keyframes jump{
     0%{top:150px;}
     30%{top: 100px;}
