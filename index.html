@@ -39,11 +39,17 @@
     </div>
 
     <div class="container">
-        <h2>Filler</h2>
-        <p>filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler </p>
-        <button class="button-13" role="button">Github</button>
+        <h2>Algorithms</h2>
+        <p>Some algorithms made in Python and Javascript by me.</p>
+        <br><br>
+        <div class="slideContainer">
+            <a class="prev" id="prev">&#10094;</a>
+            <div class="slides" id = "projectName"><a href="" id = "projectLink">Name</a></div>
+            <span class="projectCounter"id = "projectNumber">0</span>
+            <a class="next" id="next">&#10095;</a>
+        </div>
             <div class="project">
-                <img src="images\pirasmer.png" class = "projimage" alt="Avatar" style="width:80%">
+                <img src="images\algoimage.png" class = "projimage" alt="Image" style="width:120%">
             </div>
         <div class="project_links">
             <a href="https://github.com/p1r4sm3r" class="button_links" target=”_blank”>Github</a>
@@ -55,7 +61,7 @@
         <p>filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler </p>
         <button class="button-13" role="button">Github</button>
             <div class="project">
-                <img src="images\pirasmer.png" class = "projimage" alt="Avatar" style="width:80%">
+                <img src="images\jewcat1.jpg" class = "projimage" alt="Avatar" style="width:80%">
             </div>
         <div class="project_links">
             <a href="https://github.com/p1r4sm3r" class="button_links" target=”_blank”>Github</a>
@@ -64,4 +70,59 @@
 
 </body>
 <script src="script.js"></script>
+<script type="module">
+import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+</script>
+<script type="module">
+import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+var projectName = [], projectLink = [], a = document.getElementById('projectLink').innerHTML, n=0;
+const octokit = new Octokit({ auth: `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` });
+const response = octokit.request("GET /repos/p1r4sm3r/Miscellaneous-Algorithms/contents/", {
+    owner: 'OWNER',
+    repo: 'REPO',
+    path: 'PATH'
+});
+response.then(function(result, res){
+    const projects = result.data;
+    //console.log(result.data)
+    for (let i=0;i<projects.length;i++){
+        projectName.push(projects[i]["name"])
+        projectLink.push(projects[i]["_links"]["html"])
+    };
+    //console.log(projectName, projectLink)
+});
+
+document.getElementById("prev").addEventListener('click', function slideClick() {
+    var projectID = document.getElementById('projectNumber').innerHTML;
+    projectID = parseInt(projectID)-1;
+    document.getElementById('projectNumber').innerHTML = projectID;
+    document.getElementById('projectLink').innerHTML = projectName[projectID];
+    document.getElementById("projectLink").setAttribute("href", projectLink[projectID]);})
+
+document.getElementById("next").addEventListener('click', function slideClick() {
+    var projectID = document.getElementById('projectNumber').innerHTML;
+    projectID = parseInt(projectID)+1;
+    document.getElementById('projectNumber').innerHTML = projectID;
+    document.getElementById('projectLink').innerHTML = projectName[projectID];
+    document.getElementById("projectLink").setAttribute("href", projectLink[projectID]);})
+
+setInterval(function slides(){
+    var projectID = document.getElementById('projectNumber').innerHTML;
+    projectID = parseInt(projectID)+1;
+    if (projectID!=projectName.length){
+        document.getElementById('projectLink').innerHTML = projectName[projectID];
+        document.getElementById("projectLink").setAttribute("href", projectLink[projectID]);
+        document.getElementById('projectNumber').innerHTML = projectID;
+    }
+    projectID+=1
+}, 5000);
+setInterval(function checkSlide(){
+    var projectID = document.getElementById('projectNumber').innerHTML;
+    projectID = parseInt(projectID);
+    if (projectID > 28 || projectID < 0){projectID=0}
+    document.getElementById('projectLink').innerHTML = projectName[projectID];
+    document.getElementById("projectLink").setAttribute("href", projectLink[projectID]);
+    document.getElementById('projectNumber').innerHTML = projectID;
+}, 10);
+</script>
 </html>
