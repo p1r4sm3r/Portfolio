@@ -9,8 +9,9 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">Main</a></li>
-                <li><a href="#">Main</a></li>
+                <li><a href="#algorithms">Algorithms</a></li>
+                <li><a href="#gameContainer">Game</a></li>
+                <li><a href="#blank">Blank</a></li>
             </ul>
         </nav>
     </header>
@@ -19,7 +20,7 @@
 
     <div class="title">Pirasmer</div>
 
-    <div class="container">
+    <div class="container" id = "gameContainer">
         <form method="post" action="/">
         <select name="nameid">
             <option value="Pirasmer">Pirasmer</option>
@@ -31,7 +32,7 @@
         </form>
         <div id ="pause"></div>
         <div class="counter"><span id ="scoreSpan">0</span></div>
-        <div class="highscore"><span id ="highscore">0</span></div>
+        <div class="highscore"id="algorithms"><span id ="highscore">0</span></div>
         <div id="game">
             <div id="character"></div>
             <div id="block"></div>
@@ -40,28 +41,27 @@
 
     <div class="container">
         <h2>Algorithms</h2>
-        <p>Some algorithms made in Python and Javascript by me.</p>
+        <p>Miscellaneous algorithms made in Python and Javascript by me.</p>
         <br><br>
         <div class="slideContainer">
             <a class="prev" id="prev">&#10094;</a>
-            <div class="slides" id = "projectName"><a href="" id = "projectLink">Name</a></div>
+            <div class="slides" id = "projectName"><a href="" id = "projectLink" target=”_blank”>Name</a></div>
             <span class="projectCounter"id = "projectNumber">0</span>
             <a class="next" id="next">&#10095;</a>
         </div>
             <div class="project">
                 <img src="images\algoimage.png" class = "projimage" alt="Image" style="width:120%">
             </div>
-        <div class="project_links">
+        <div class="project_links" >
             <a href="https://github.com/p1r4sm3r" class="button_links" target=”_blank”>Github</a>
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id = "blank">
         <h2>Filler</h2>
         <p>filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler </p>
-        <button class="button-13" role="button">Github</button>
             <div class="project">
-                <img src="images\jewcat1.jpg" class = "projimage" alt="Avatar" style="width:80%">
+                <img src="images\pirasmer.png" class = "projimage" alt="Image" style="width:80%">
             </div>
         <div class="project_links">
             <a href="https://github.com/p1r4sm3r" class="button_links" target=”_blank”>Github</a>
@@ -75,8 +75,8 @@ import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 </script>
 <script type="module">
 import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-var projectName = [], projectLink = [], a = document.getElementById('projectLink').innerHTML, n=0;
-const octokit = new Octokit({ auth: `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` });
+var projectName = [], projectLink = [], a = document.getElementById('projectLink').innerHTML;
+const octokit = new Octokit({ auth: "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", });
 const response = octokit.request("GET /repos/p1r4sm3r/Miscellaneous-Algorithms/contents/", {
     owner: 'OWNER',
     repo: 'REPO',
@@ -84,12 +84,10 @@ const response = octokit.request("GET /repos/p1r4sm3r/Miscellaneous-Algorithms/c
 });
 response.then(function(result, res){
     const projects = result.data;
-    //console.log(result.data)
     for (let i=0;i<projects.length;i++){
         projectName.push(projects[i]["name"])
         projectLink.push(projects[i]["_links"]["html"])
     };
-    //console.log(projectName, projectLink)
 });
 
 document.getElementById("prev").addEventListener('click', function slideClick() {
@@ -115,7 +113,7 @@ setInterval(function slides(){
         document.getElementById('projectNumber').innerHTML = projectID;
     }
     projectID+=1
-}, 5000);
+}, 3000);
 setInterval(function checkSlide(){
     var projectID = document.getElementById('projectNumber').innerHTML;
     projectID = parseInt(projectID);
