@@ -9,9 +9,9 @@
     <header>
         <nav>
             <ul>
+                <li><a onclick="darkmode()">Darkmode</a></li>
                 <li><a href="#algorithms">Algorithms</a></li>
                 <li><a href="#gameContainer">Game</a></li>
-                <li><a href="#blank">Blank</a></li>
             </ul>
         </nav>
     </header>
@@ -30,7 +30,7 @@
         <input id="scores" type="hidden" name="scores" value=""/>
         <button class = 'button button1' style = "position:relative; left:10px;">Add</button>
         </form>
-        <div id ="pause"></div>
+        <div id ="pause" class="pause"></div>
         <div class="counter"><span id ="scoreSpan">0</span></div>
         <div class="highscore"id="algorithms"><span id ="highscore">0</span></div>
         <div id="game">
@@ -40,48 +40,63 @@
     </div>
 
     <div class="container">
-        <h2>Algorithms</h2>
-        <p>Miscellaneous algorithms made in Python and Javascript by me.</p>
-        <br><br>
-        <div class="slideContainer">
-            <a class="prev" id="prev">&#10094;</a>
-            <div class="slides" id = "projectName"><a href="" id = "projectLink" target=”_blank”>Name</a></div>
+        <img src="images\algoimage.jpg" class = "projimage" alt="Image">
+        <div class="cover"></div>
+        <div class="content">
+            <h2>Algorithms</h2>
+            <p>Miscellaneous algorithms made in Python and Javascript by me.</p>
+            <br>
             <span class="projectCounter"id = "projectNumber">0</span>
-            <a class="next" id="next">&#10095;</a>
-        </div>
-            <div class="project">
-                <img src="images\algoimage.png" class = "projimage" alt="Image" style="width:120%">
-            </div>
-        <div class="project_links" >
+            <div class="slideContainer">
+                <a class="prev" id="prev">&#10094;</a>
+                    <div class="slides" id = "projectName"><a href="" id = "projectLink" target=”_blank”>Projects</a></div>
+                        <a class="next" id="next">&#10095;</a>
+            </div>   
+            <br><br>
             <a href="https://github.com/p1r4sm3r" class="button_links" target=”_blank”>Github</a>
+            <a href="https://github.com/p1r4sm3r" class="button_links" target=”_blank” style="margin-left:10em;">Github</a>
+            <br><br>
         </div>
     </div>
 
-    <div class="container" id = "blank">
-        <h2>Filler</h2>
-        <p>filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler </p>
-            <div class="project">
-                <img src="images\pirasmer.png" class = "projimage" alt="Image" style="width:80%">
-            </div>
-        <div class="project_links">
+    <div class="container">
+        <img src="images\pirasmer.jpg" class = "projimage" alt="Image">
+        <div class="cover"></div>
+        <div class="content">
+            <h2>Filler</h2>
+            <p>Lorem ipsum filler filler filler filler filler filler filler.</p>
+            <br>
+            <br><br>
             <a href="https://github.com/p1r4sm3r" class="button_links" target=”_blank”>Github</a>
+            <a href="https://github.com/p1r4sm3r" class="button_links" target=”_blank” style="margin-left:10em;">Github</a>
+            <br><br>
         </div>
     </div>
 
 </body>
 <script src="script.js"></script>
-<script type="module">
-import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+<script>
+function darkmode(){
+    var element = document.body;
+    var container = document.querySelectorAll('container');
+    element.classList.toggle("dark-mode");
+    selected.forEach(function(el) {
+        el.classList.remove('option-selected');
+    });
+    e.target.classList.add('option-selected');
+}
 </script>
 <script type="module">
 import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 var projectName = [], projectLink = [], a = document.getElementById('projectLink').innerHTML;
-const octokit = new Octokit({ auth: "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", });
+const octokit = new Octokit({ auth: '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', });
 const response = octokit.request("GET /repos/p1r4sm3r/Miscellaneous-Algorithms/contents/", {
     owner: 'OWNER',
     repo: 'REPO',
     path: 'PATH'
 });
+
+
 response.then(function(result, res){
     const projects = result.data;
     for (let i=0;i<projects.length;i++){
