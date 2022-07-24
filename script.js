@@ -5,7 +5,16 @@ var highScore = 0;
 var scores = [];
 var button = document.getElementById('pause');
 var on = false;
+var sprite = document.getElementById("sprite"), n = 0;
 
+setInterval(function spriteanimate(){
+    if (on){
+    if (n==6){n=0}
+    sprite.src = 'images/dino'+n.toString()+'.png';
+    console.log(n)
+    n+=1;}
+
+},50);
     button.addEventListener('click', function handleClick() {
         if (on == true){
             on = false;
