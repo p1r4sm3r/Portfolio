@@ -13,7 +13,7 @@ html
 }
 #character
 {
-	background-color: #231c40;
+/* 	background-color: #231c40; */
 	height: 50px;
 	position: relative;
 	top: 75%;
@@ -26,7 +26,7 @@ html
 #block
 {
 	animation: block 1s infinite linear;
-	background-color: #6F58C9;
+/* 	background-color: #6F58C9; */
 	height: 20px;
 	left: 98%;
 	position: relative;
