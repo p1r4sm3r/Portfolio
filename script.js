@@ -15,18 +15,22 @@ setInterval(function spriteanimate(){
     n+=1;}
 
 },50);
+
+block.style.animation = "none";
+
     button.addEventListener('click', function handleClick() {
         if (on == true){
+            console.log('off')
             on = false;
             block.style.animation = "none";
             //character.classList.remove("animate");
         }
         else {
+            console.log('on')
             on = true
             //character.classList.add("animate");
             block.style.animation = "block 1s infinite linear";
         };
-        console.log('on!', on);
     });
     function jump(){
         if(character.classList == "animate"){return}
@@ -44,7 +48,6 @@ setInterval(function spriteanimate(){
             if (Math.floor(counter)>highScore){
                 highScore = Math.floor(counter);
                 scores.push(Math.floor(counter));
-                //exports.scores = scores;
                 document.getElementById("scores").value = scores
                 console.log(scores)
                 document.getElementById("highscore").innerHTML = highScore;
