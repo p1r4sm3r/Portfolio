@@ -33,6 +33,7 @@
         <div id ="pause" class="pause"></div>
         <div class="counter"><span id ="scoreSpan">0</span></div>
         <div class="highscore"id="algorithms"><span id ="highscore">0</span></div>
+        <canvas></canvas>
         <div id="game">
             <div id="character"><img id="sprite" src="images/dinoidle.png" alt="Error"></div>
             <div id="block"><img src="images/spike.png" alt="Error"></div>
@@ -80,30 +81,16 @@ function darkmode(){
     var element = document.body;
     var container = document.querySelectorAll('container');
     element.classList.toggle("dark-mode");
-    selected.forEach(function(el) {
-        el.classList.remove('option-selected');
-    });
-    e.target.classList.add('option-selected');
+    container.classList.toggle("dark-mode")
 }
 </script>
 <script type="module">
-import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 var projectName = [], projectLink = [], a = document.getElementById('projectLink').innerHTML;
-const octokit = new Octokit({ auth: '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', });
-const response = octokit.request("GET /repos/p1r4sm3r/Miscellaneous-Algorithms/contents/", {
-    owner: 'OWNER',
-    repo: 'REPO',
-    path: 'PATH'
-});
 
+// As of 31/7/22:
+projectName = ["Alphabet Position and Unique Order.js", "Anagram.js", "Equal Sides.js", "Extract Domain.js", "Human Readable Duration.js", "IP Validation.py", "Max Subarray Sum.js", "Merge Sort and Move Zero.js", "Middle and Vowels.js", "Mileage.js", "Multiples.py", "Next Biggest Int Same Digits.js", "Odd Occurrence.js", "Pangram.py", "Parentheses.js", "Pig Latin and Last Digit Powers.py", "Primes and Vowels.py", "README.md", "RGB to HEX.py", "Readable Human Time.js", "Rot13.js", "Smallest Int and Slice.js", "Smash, list to string.py", "Sort the odd.py", "String Incrementer.js", "Strip Comments.js", "Sum without range.js", "evenOrOdd.cpp", "firstNonRepeatingLetter.js", "isalnum.js", "nextSmaller.js", "snail.js", "whatCentury.py"], 
+projectLink = ["https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Alphabet%20Position%20and%20Unique%20Order.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Anagram.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Equal%20Sides.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Extract%20Domain.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Human%20Readable%20Duration.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/IP%20Validation.py","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Max%20Subarray%20Sum.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Merge%20Sort%20and%20Move%20Zero.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Middle%20and%20Vowels.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Mileage.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Multiples.py","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Next%20Biggest%20Int%20Same%20Digits.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Odd%20Occurrence.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Pangram.py","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Parentheses.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Pig%20Latin%20and%20Last%20Digit%20Powers.py","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Primes%20and%20Vowels.py","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/README.md","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/RGB%20to%20HEX.py","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Readable%20Human%20Time.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Rot13.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Smallest%20Int%20and%20Slice.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Smash,%20list%20to%20string.py","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Sort%20the%20odd.py","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/String%20Incrementer.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Strip%20Comments.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/Sum%20without%20range.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/evenOrOdd.cpp","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/firstNonRepeatingLetter.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/isalnum.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/nextSmaller.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/snail.js","https://github.com/p1r4sm3r/Miscellaneous-Algorithms/blob/main/whatCentury.py"];
 
-response.then(function(result, res){
-    const projects = result.data;
-    for (let i=0;i<projects.length;i++){
-        projectName.push(projects[i]["name"])
-        projectLink.push(projects[i]["_links"]["html"])
-    };
-});
 
 document.getElementById("prev").addEventListener('click', function slideClick() {
     var projectID = document.getElementById('projectNumber').innerHTML;
